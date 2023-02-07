@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
     private ArrayList<Book> collection;
@@ -32,5 +33,21 @@ public class Library {
         } else {
             return false;
         }
+    }
+    public HashMap<String, Integer> getGenreBreakdown () {
+
+        HashMap<String, Integer> result = new HashMap<>();
+
+        for (Book book: this.collection) {
+            String genre = book.getGenre();
+            if (result.get(genre) == null) {
+                result.put(genre, 1);
+            } else {
+                Integer current = result.get(genre);
+                result.remove(genre);
+                result.put(genre, current + 1);
+            }
+        }
+        return result;
     }
 }

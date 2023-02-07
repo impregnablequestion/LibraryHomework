@@ -15,6 +15,11 @@ public class Book {
     public boolean getAvailable () {
         return this.available;
     }
+
+    public String getGenre() {
+        return this.genre;
+    }
+
     public void toggleAvailable() {
         this.available = !this.available;
     }
