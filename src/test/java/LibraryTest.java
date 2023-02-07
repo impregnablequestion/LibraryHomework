@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class LibraryTest {
     Library pollokshieldsLib;
@@ -31,5 +31,22 @@ public class LibraryTest {
         tinyLib.addBook(paul);
         tinyLib.addBook(normalppl);
         assertEquals(2, tinyLib.getTotalBooks());
+    }
+    @Test
+    public void cantLendBookNotInCollection () {
+        pollokshieldsLib.lend(lote);
+        assertTrue(lote.getAvailable());
+    }
+    @Test
+    public void canLendBookInCollection () {
+        pollokshieldsLib.addBook(lote);
+        pollokshieldsLib.lend(lote);
+        assertFalse(lote.getAvailable());
+    }
+    @Test
+    public void canAcceptReturn () {
+        pollokshieldsLib.lend(lote);
+        pollokshieldsLib.acceptReturn(lote);
+        assertTrue(lote.getAvailable());
     }
 }

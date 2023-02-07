@@ -17,4 +17,20 @@ public class Library {
             this.collection.add(book);
         }
     }
+    public boolean lend (Book book) {
+        if (book.getAvailable() && this.collection.contains(book)) {
+            book.toggleAvailable();
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean acceptReturn (Book book) {
+        if (!book.getAvailable() && this.collection.contains(book)) {
+            book.toggleAvailable();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
